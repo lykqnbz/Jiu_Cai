@@ -1,131 +1,179 @@
+<!--
+ * @Descripttion: 
+ * @Author: AXiang
+ * @Date: 2020-08-14 01:29:28
+ * @LastEditors: AXiang
+ * @LastEditTime: 2020-08-14 03:43:19
+-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>二维码扫描</title>
-    <style>
-        .qr {
-            display: flex;
-            align-items: center;
-        }
+  <meta charset="UTF-8">
+  <title>华南海鲜市场-韭菜批发部</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/base.css">
 
-        .qr-img {
-            width: 30px;
-            height: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .jsbridge {
-            height: 200px;
-            width: 200px;
-            background-color: red;
-        }
-
-        .upimg {
-            height: 200px;
-            width: 200px;
-            background-color: green;
-            margin-bottom: 50px;
-        }
-
-        input[node-type=jsbridge] {
-            visibility: hidden;
-            width: 0px;
-        }
-
-        input[node-type=jsbridgecD] {
-            position: absolute;
-            visibility: hidden;
-            top: 0px;
-            left: 0px;
-            z-index: 0;
-            ;
-            width: 30px;
-            height: 30px;
-            ;
-        }
-
-        .result-qrcode {
-            width: 200px;
-            height: 50px;
-            border: 1px solid #999;
-        }
-
-        .qr2 {
-            margin-left: 50px;
-            position: relative;
-        }
-
-        .qr1 {
-            width: 40px;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="qr">
-        <div class="qr-btn qr1" node-type="qr-btn">
-            <img class="qr-img" src="wx.png" />
-            <input node-type="jsbridge" type="file" name="myPhoto" />
-        </div>
-        <div class="qr-btn qr2">
-            <img class="qr-img" src="wc.png" onclick="qrClick()" />
-            <input id="qr2" node-type="jsbridgecD" type="file" accept="image/*;capture=camera" onchange="txmCheck()">
-        </div>
+  <div id='container'>
+    <canvas id="scene"></canvas>
+    <canvas id="canvas"></canvas>
+    <div class="text-box">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
-    <div class="result-qrcode">
+    <svg height="0" width="0">
+      <defs>
+        <clipPath id="svgTextPath">
+          <text x="0" y="110" textLength="700px">华南海鲜市场-韭菜批发部</text>
+        </clipPath>
+      </defs>
+    </svg>
 
+
+    <div class="content">
+
+      <div class="jc_table">
+        <table id="process-demo-3" class="tb tb-b  c-t-center">
+          <thead>
+            <tr>
+              <th>韭菜批发地</th>
+              <th>8.1 ~ 8.7</th>
+              <th>8.8 ~ 8.15</th>
+              <th>8.16 ~ 8.21</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>市场营销市场</td>
+              <td>8</td>
+              <td>7</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>研发市场</td>
+              <td>89</td>
+              <td>88</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>综合管理市场</td>
+              <td>8</td>
+              <td>8</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>国防市场</td>
+              <td>11</td>
+              <td>11</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>金融市场</td>
+              <td>27</td>
+              <td>27</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>政企市场</td>
+              <td>3</td>
+              <td>2</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>----</td>
+              <td>----</td>
+              <td>----</td>
+              <td>----</td>
+            </tr>
+            <tr id="black">
+              <td>合计捆数</td>
+              <td>146</td>
+              <td>143</td>
+              <td></td>
+            </tr>
+            <tr id="green">
+              <td>本周韭菜新增捆数</td>
+              <td>0</td>
+              <td>2</td>
+              <td></td>
+            </tr>
+            <tr id="red">
+              <td>上周韭菜觉醒捆数</td>
+              <td>0</td>
+              <td>5</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="jc_log">
+        <div id="FontScroll">
+          <ul>
+            <li><a href="#">-----------------------------8.8 ~ 8.15-----------------------------</a></li>
+            <li><a href="#">8.13 <label>廖明明(算法)</label> 进入 研发中心-基础研究部-NLP抽取小组</a></li>
+            <li><a href="#">8.12 <label>陈细明(产品)</label> 进入 研发中心-产品管理部-产品组</a></li>
+            <li><a href="#">8.11 <label>杨泽义(后端)</label> 进入 研发中心-认知职能部-可视化建模组</a></li>
+            <li><a href="#">8.10 <label>曹伶春(经理)</label> 进入 研发中心-AI平台组-建模训练组</a></li>
+            <li class="leave"><a href="#">8.8 <label>陈文科(产品)</label> 离职 国防中心-产品实施部-产品方案部</a></li>
+            <li><a href="#">-----------------------------8.1 ~ 8.7-----------------------------</a></li>
+            <li><a href="#">8.6 <label>林国文(前端)</label> 进入 研发中心-认知职能部-可视化建模组</a></li>
+            <li><a href="#">8.1 <label>叶默默(销售)</label> 进入 政企中心-销售售前部</a></li>
+            <li><a href="#">8.1 <label>高育法(后端)</label> 进入 研发中心-认知职能部-可视化建模组</a></li>
+            <li><a href="#">8.1 <label>陈文科(产品)</label> 进入 国防中心-产品实施部-产品方案部</a></li>
+            <li><a href="#">8.1 <label>秦楠(产品)</label> 进入 研发中心-产品管理部-产品组</a></li>
+            <li><a href="#">8.1 <label>张汝平(后端)</label> 进入 研发中心-AI平台组-建模训练组</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <script src="lib/zepto.js"></script>
-    <script src="lib/qrcode.lib.min.js"></script>
-    <script src="lib/qrcode.js"></script>
-    <script src="lib/quagga.min.js"></script>
-    <script>
-        //初始化扫描二维码按钮
-        $(function () {
-            Qrcode.init($('[node-type=qr-btn]'));
-        });
+    <div class="footer">
+      每天00:00自动更新数据   8月8号之前数据不准确
+    </div>
+  </div>
 
-        function qrClick() {
-            $("#qr2").click();
-        }
+  <script src='js/zdog.dist.min.js'></script>
+  <script src="js/ec1.js"></script>
 
+  <script src='js/three.min.js'></script>
+  <script src="js/zzsc.js"></script>
 
-        function txmCheck() {
-            var input = document.querySelector("input[node-type=jsbridgecD]");
-            if (input.files && input.files.length) {
-                Quagga.decodeSingle({
-                    inputStream: {
-                        size: 800 // 这里指定图片的大小，需要自己测试一下
-                    },
-                    locator: {
-                        patchSize: "medium",
-                        halfSample: false
-                    },
-                    numOfWorkers: 1,
-                    decoder: {
-                        readers: [{
-                            format: "code_128_reader", // ean_reader 这里指定ean条形码，就是国际13位的条形码   code39    code_128
-                            config: {}
-                        }]
-                    },
-                    locate: true,
-                    src: URL.createObjectURL(input.files[0])
-                }, function (result) {
-                    var code = result.codeResult.code,
-                        $node,
-                        canvas = Quagga.canvas.dom.image;
-                    // 将扫描得到的条形码打印出来
-                    $('.result-qrcode').html("");
-                    $('.result-qrcode').html(code);
-
-                });
-            }
-        }
-    </script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/tablesMergeCell.js"></script>
+  <script src="js/fontscroll.js"></script>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+  integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+<script>
+  $(function () {
+    $('#FontScroll').FontScroll({
+      time: 2000,
+      num: 1
+    });
+  });
+
+  function move() {
+    let box = document.querySelector(".text-box");
+    let dt = document.querySelectorAll(".dot");
+    window.addEventListener("mousemove", function (e) {
+      for (let i = 0; i < dt.length; i++) {
+        //圆灯相对于 容器的坐标位置
+        let x = e.pageX - box.offsetLeft - dt[i].offsetWidth / 2;
+        let y = e.pageY - box.offsetTop - dt[i].offsetHeight / 2;
+        TweenLite.to(dt[i], i + 0.2, {
+          x: x,
+          y: y,
+          ease: Back.easeOut.config(1.7)
+        });
+      }
+    });
+  }
+  move()
+</script>
 
 </html>

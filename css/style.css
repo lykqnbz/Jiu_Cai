@@ -1,0 +1,190 @@
+body {
+  background: #248079;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#scene {
+  width: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#canvas {
+  width: 600px !important;
+  height: 300px !important;
+  position: absolute;
+  top: 200px;
+  right: -100px;
+}
+
+#container {
+  width: 100%;
+  padding: 0 20%;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  left: 0px;
+  font-size: 13px;
+  color: #333;
+}
+
+.jc_table {
+  width: 100%;
+}
+
+.tb {
+  border: none !important;
+}
+
+.tb thead tr th:nth-child(1) {
+  background: #6D768F !important;
+  color: #fff !important;
+  border: #6D768F !important;
+}
+
+.tb tbody tr:nth-child(2n-1) td:nth-child(1) {
+  background: #7B829A !important;
+  color: #fff !important;
+  border: #7B829A !important;
+}
+
+.tb tbody tr:nth-child(2n) td:nth-child(1) {
+  background: #6D768F !important;
+  color: #fff !important;
+  border: #6D768F !important;
+}
+
+.tb tbody tr:nth-child(2n) td:not(:nth-child(1)) {
+  background: #F6F7FA !important;
+  color: #A4A4B3 !important;
+}
+
+#green td {
+  color: #62c169 !important;
+}
+
+#red td {
+  color: #FF6A6A !important;
+}
+
+#black td {
+  color: #000 !important;
+}
+
+ul li {
+  list-style: none;
+}
+
+#FontScroll {
+  width: 500px;
+  height: 490px;
+  line-height: 40px;
+  overflow: Hidden;
+  padding: 5px 0;
+  margin: 0 auto;
+  background-color: #2A2A2A;
+  border-radius: 5px;
+}
+
+#FontScroll a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+#FontScroll .line {
+  text-align: left;
+  width: 100%;
+}
+
+#FontScroll .fontColor a {
+  color: #62c169;
+  transition: all 1.5s ease 0s;
+}
+
+#FontScroll {
+  padding-left: 10px
+}
+#FontScroll .leave a{
+  color: #FF6A6A !important;
+}
+
+
+/* TITle YYY */
+.text-box {
+  width: 700px;
+  height: 200px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  clip-path: url(#svgTextPath);
+  color: white;
+  background: #2fddc6;
+
+}
+
+.dot {
+  display: inline-block;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.9;
+}
+
+.dot:nth-child(1) {
+  width: 150px;
+  height: 150px;
+  background: rgb(30, 207, 148);
+  z-index: 8;
+  transform: translateX(-175px) translateY(-175px);
+}
+
+.dot:nth-child(2) {
+  width: 300px;
+  height: 300px;
+  background: rgb(28, 204, 195);
+  z-index: 7;
+  transform: translateX(-250px) translateY(-250px);
+}
+
+.dot:nth-child(3) {
+  width: 500px;
+  height: 500px;
+  background: rgb(18, 155, 247);
+  z-index: 6;
+  transform: translateX(-350px) translateY(-350px);
+}
+
+text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: 3.3rem;
+  text-transform: uppercase;
+}
